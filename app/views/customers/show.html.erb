@@ -1,0 +1,27 @@
+<%=render 'layouts/adminbar'%>
+<div style="margin:50px 0 0 45%; position:fixed; width:60%;">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @customer.phoneNumber %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @customer.address %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
+</div>

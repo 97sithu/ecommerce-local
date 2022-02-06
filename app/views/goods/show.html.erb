@@ -1,0 +1,42 @@
+<%=render 'layouts/adminbar'%>
+<div style="margin:50px 0 0 45%; position:fixed; width:60%;">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @good.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @good.price %>
+</p>
+
+<p>
+  <strong>Measurement:</strong>
+  <%= @good.measurement %>
+</p>
+
+<p>
+  <strong>Expiredate:</strong>
+  <%= @good.expireDate %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @good.about %>
+</p>
+
+<p>
+  <strong>Seller:</strong>
+  <%= @good.seller_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @good.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_good_path(@good) %> |
+<%= link_to 'Back', goods_path %>
+</div>

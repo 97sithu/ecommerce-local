@@ -1,0 +1,80 @@
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 20px 0 0 0;
+  padding: 0;
+  width: 200px;
+  background-color: #333;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+ 
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #333;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+
+</style>
+<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="container">
+<nav>
+<ul class="nav navbar-nav navbar-right">
+<li><%= link_to current_admin.email , edit_admin_registration_path %></li>
+<li><%= link_to "Help", '#' %></li>
+<li><%= link_to "sign out", destroy_admin_session_path,method: :delete %></li>
+</ul
+</nav>
+</div>
+</header>
+<div class="sidebar">
+<%= link_to "Dashbaord", '/dashboard/index' %>
+<%= link_to "Seller", '/sellers' %>
+<%= link_to "Customer", '/customers' %>
+<%= link_to "Good", '/goods' %>
+<%= link_to "Cart", '/carts' %>
+<%= link_to "Order", '/orders' %>
+<%= link_to "Category", '/categories' %>
+<%= link_to "Admin", '#' %>
+</div>

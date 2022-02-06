@@ -1,0 +1,9 @@
+<%=render 'layouts/adminbar'%>
+<div style="margin:50px 0 0 45%; position:fixed; width:60%;">
+<h1>Editing Good</h1>
+
+<%= render 'form', good: @good %>
+
+<%= link_to 'Show', @good %> |
+<%= link_to 'Back', goods_path %>
+</div>

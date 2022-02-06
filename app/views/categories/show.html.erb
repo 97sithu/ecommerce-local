@@ -1,0 +1,12 @@
+<%=render 'layouts/adminbar'%>
+<div style="margin:50px 0 0 15%; position:fixed; width:60%;">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
+</div>
