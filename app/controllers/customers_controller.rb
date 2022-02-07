@@ -22,6 +22,7 @@ class CustomersController < ApplicationController
   # POST /customers or /customers.json
   def create
     @customer = Customer.new(customer_params)
+    @customer.image.attach(params[:customer][:image])
 
     respond_to do |format|
       if @customer.save
@@ -65,6 +66,6 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:name, :email, :phoneNumber, :address)
+      params.require(:customer).permit(:name, :email, :phoneNumber, :address, :image)
     end
 end

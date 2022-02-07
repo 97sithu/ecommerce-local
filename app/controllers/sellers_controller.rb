@@ -22,7 +22,7 @@ class SellersController < ApplicationController
   # POST /sellers or /sellers.json
   def create
     @seller = Seller.new(seller_params)
-
+    @seller.image.attach(params[:seller][:image])
     respond_to do |format|
       if @seller.save
         format.html { redirect_to seller_url(@seller), notice: "Seller was successfully created." }
@@ -65,6 +65,6 @@ class SellersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def seller_params
-      params.require(:seller).permit(:name, :phone, :email, :address, :intro)
+      params.require(:seller).permit(:name, :phone, :email, :address, :intro, :image)
     end
 end
