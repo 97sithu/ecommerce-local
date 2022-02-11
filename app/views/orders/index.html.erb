@@ -26,8 +26,8 @@
         <td><%= order.quantity %></td>
         <td><%= order.totalPrice %></td>
         <td><%= order.cart_id %></td>
-        <td><%= order.customer_id %></td>
-        <td><%= order.good_id %></td>
+        <td><%= order.customer.try(:name) %></td>
+        <td><%= order.good.try(:name) %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -39,4 +39,5 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+<%= will_paginate @orders, renderer: BootstrapPagination::Rails  %>
 </div>

@@ -29,12 +29,12 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @order.customer_id %>
+ <%= @order.customer.try(:name) %>
 </p>
 
 <p>
   <strong>Good:</strong>
-  <%= @order.good_id %>
+ <%= @order.good.try(:name) %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

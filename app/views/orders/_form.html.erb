@@ -17,8 +17,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%=form.label :status%>
+    <div>
+    <%=form.select(:status, options_for_select([['Shipping','Shipping'],['Delivered','Delivered']]))%>
+    </div>
   </div>
 
   <div class="field">

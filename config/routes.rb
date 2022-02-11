@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/index'
   get 'dashboard/index'
   get 'home/index'
   devise_for :admins

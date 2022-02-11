@@ -20,8 +20,8 @@
       <tr scope="row">
         <td><%= cart.quantity %></td>
         <td><%= cart.totalprice %></td>
-        <td><%= cart.good_id %></td>
-        <td><%= cart.customer_id %></td>
+        <td><%= cart.good.try(:name) %></td>
+        <td><%= cart.customer.try(:name) %></td>
         <td><%= link_to 'Show', cart %></td>
         <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
         <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,3 +33,4 @@
 <br>
 
 <%= link_to 'New Cart', new_cart_path %>
+<%= will_paginate @carts, renderer: BootstrapPagination::Rails  %>

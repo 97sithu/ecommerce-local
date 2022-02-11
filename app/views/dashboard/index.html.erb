@@ -1,2 +1,22 @@
 <%=render 'layouts/adminbar'%>
 
+<div style="float:right;border:2px solid black;margin:20px 60% 0 0">
+    <label>Seller <%=@sellerCount%></label>
+    <% @sellers.each do |seller| %>
+    <%=seller.name%>
+    <%=seller.phone%>
+    <%=seller.email%>
+    <br>
+ <%end%>
+</div>
+
+<div style="float:right;border:2px solid black;margin:-70px 45% 0 0">
+    <label>Good <%=@goodCount%></label>
+    <% @goods.each do |good| %>
+    <%=good.name%>
+    <%=good.price%>
+    <%=good.seller.name%>
+    <br>
+    <%end%>
+</div>
+

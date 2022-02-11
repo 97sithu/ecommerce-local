@@ -3,7 +3,7 @@ class GoodsController < ApplicationController
 
   # GET /goods or /goods.json
   def index
-    @goods = Good.all
+    @goods = Good.paginate(page: params[:page],per_page: 3)
   end
 
   # GET /goods/1 or /goods/1.json
@@ -22,7 +22,7 @@ class GoodsController < ApplicationController
   # POST /goods or /goods.json
   def create
     @good = Good.new(good_params)
-
+    @good.image.attach(params[:good][:image])
     respond_to do |format|
       if @good.save
         format.html { redirect_to good_url(@good), notice: "Good was successfully created." }
@@ -65,6 +65,6 @@ class GoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def good_params
-      params.require(:good).permit(:name, :price, :measurement, :expireDate, :about, :seller_id, :category_id)
+      params.require(:good).permit(:name, :price, :measurement, :expireDate, :about, :seller_id, :category_id, :image)
     end
 end

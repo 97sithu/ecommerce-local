@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass'
 #Authentication for Admin
 gem 'devise'
+#For paginagtion
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'

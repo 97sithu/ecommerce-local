@@ -14,12 +14,12 @@
 
 <p>
   <strong>Good:</strong>
-  <%= @cart.good_id %>
+ <%= @cart.good.try(:name) %>
 </p>
 
 <p>
   <strong>Customer:</strong>
-  <%= @cart.customer_id %>
+  <%= @cart.customer.try(:name) %>
 </p>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |

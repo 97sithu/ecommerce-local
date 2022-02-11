@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 2022_02_06_111859) do
     t.string "status"
     t.integer "quantity"
     t.integer "totalPrice"
-    t.integer "cart_id", null: false
-    t.integer "customer_id", null: false
-    t.integer "good_id", null: false
+    t.integer "cart_id"
+    t.integer "customer_id"
+    t.integer "good_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"

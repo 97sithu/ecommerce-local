@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   # GET /carts or /carts.json
   def index
-    @carts = Cart.all
+    @carts = Cart.paginate(page: params[:page],per_page: 5)
   end
 
   # GET /carts/1 or /carts/1.json
