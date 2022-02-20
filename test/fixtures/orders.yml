@@ -1,19 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  orderDate: 2022-02-02
+  order_date: 2022-02-20
   status: MyString
-  quantity: 1
-  totalPrice: 1
-  cart: one
-  customer: one
-  good: one
+  customers: one
 
 two:
-  orderDate: 2022-02-02
+  order_date: 2022-02-20
   status: MyString
-  quantity: 1
-  totalPrice: 1
-  cart: two
-  customer: two
-  good: two
+  customers: two

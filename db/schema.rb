@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_121953) do
+ActiveRecord::Schema.define(version: 2022_02_20_105828) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,14 +47,10 @@ ActiveRecord::Schema.define(version: 2022_02_13_121953) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "totalprice"
-    t.integer "good_id", null: false
-    t.integer "customer_id", null: false
+    t.integer "customers_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_carts_on_customer_id"
-    t.index ["good_id"], name: "index_carts_on_good_id"
+    t.index ["customers_id"], name: "index_carts_on_customers_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -69,7 +65,23 @@ ActiveRecord::Schema.define(version: 2022_02_13_121953) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "good_carts", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "carts_id", null: false
+    t.integer "goods_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["carts_id"], name: "index_good_carts_on_carts_id"
+    t.index ["goods_id"], name: "index_good_carts_on_goods_id"
   end
 
   create_table "goods", force: :cascade do |t|
@@ -86,19 +98,23 @@ ActiveRecord::Schema.define(version: 2022_02_13_121953) do
     t.index ["seller_id"], name: "index_goods_on_seller_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.date "orderDate"
-    t.string "status"
-    t.integer "quantity"
-    t.integer "totalPrice"
-    t.integer "cart_id"
-    t.integer "customer_id"
-    t.integer "good_id"
+  create_table "order_lines", force: :cascade do |t|
+    t.integer "price"
+    t.integer "goods_id", null: false
+    t.integer "orders_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-    t.index ["good_id"], name: "index_orders_on_good_id"
+    t.index ["goods_id"], name: "index_order_lines_on_goods_id"
+    t.index ["orders_id"], name: "index_order_lines_on_orders_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "order_date"
+    t.string "status"
+    t.integer "customers_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customers_id"], name: "index_orders_on_customers_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -113,17 +129,17 @@ ActiveRecord::Schema.define(version: 2022_02_13_121953) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "password"
     t.index ["email"], name: "index_sellers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_sellers_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "customers"
-  add_foreign_key "carts", "goods"
+  add_foreign_key "carts", "customers", column: "customers_id"
+  add_foreign_key "good_carts", "carts", column: "carts_id"
+  add_foreign_key "good_carts", "goods", column: "goods_id"
   add_foreign_key "goods", "categories"
   add_foreign_key "goods", "sellers"
-  add_foreign_key "orders", "carts"
-  add_foreign_key "orders", "customers"
-  add_foreign_key "orders", "goods"
+  add_foreign_key "order_lines", "goods", column: "goods_id"
+  add_foreign_key "order_lines", "orders", column: "orders_id"
+  add_foreign_key "orders", "customers", column: "customers_id"
 end

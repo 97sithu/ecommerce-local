@@ -14,13 +14,9 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "New Order"
 
-    fill_in "Cart", with: @order.cart_id
-    fill_in "Customer", with: @order.customer_id
-    fill_in "Good", with: @order.good_id
-    fill_in "Orderdate", with: @order.orderDate
-    fill_in "Quantity", with: @order.quantity
+    fill_in "Customers", with: @order.customers_id
+    fill_in "Order date", with: @order.order_date
     fill_in "Status", with: @order.status
-    fill_in "Totalprice", with: @order.totalPrice
     click_on "Create Order"
 
     assert_text "Order was successfully created"
@@ -31,13 +27,9 @@ class OrdersTest < ApplicationSystemTestCase
     visit orders_url
     click_on "Edit", match: :first
 
-    fill_in "Cart", with: @order.cart_id
-    fill_in "Customer", with: @order.customer_id
-    fill_in "Good", with: @order.good_id
-    fill_in "Orderdate", with: @order.orderDate
-    fill_in "Quantity", with: @order.quantity
+    fill_in "Customers", with: @order.customers_id
+    fill_in "Order date", with: @order.order_date
     fill_in "Status", with: @order.status
-    fill_in "Totalprice", with: @order.totalPrice
     click_on "Update Order"
 
     assert_text "Order was successfully updated"

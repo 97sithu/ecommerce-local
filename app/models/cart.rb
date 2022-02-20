@@ -1,4 +1,3 @@
 class Cart < ApplicationRecord
-  belongs_to :good
-  belongs_to :customer
+  belongs_to :customers
 end

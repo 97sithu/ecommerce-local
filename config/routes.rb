@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :customers
+  resources :order_lines
+  resources :orders
+  resources :good_carts
+  resources :carts
   get 'selerdash/index'
   devise_for :sellers
   get 'admin/index'
@@ -7,8 +12,6 @@ Rails.application.routes.draw do
   
   devise_for :admins
   resources :customers
-  resources :carts
-  resources :orders
   resources :goods
   resources :sellers
   resources :categories

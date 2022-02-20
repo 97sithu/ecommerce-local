@@ -1,25 +1,8 @@
-<%=render 'layouts/adminbar'%>
-<div style="margin:50px 0 0 15%; position:fixed; width:60%;">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @cart.quantity %>
-</p>
-
-<p>
-  <strong>Totalprice:</strong>
-  <%= @cart.totalprice %>
-</p>
-
-<p>
-  <strong>Good:</strong>
- <%= @cart.good.try(:name) %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @cart.customer.try(:name) %>
+  <strong>Customers:</strong>
+  <%= @cart.customers_id %>
 </p>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |

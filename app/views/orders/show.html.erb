@@ -1,10 +1,8 @@
-<%=render 'layouts/adminbar'%>
-<div style="margin:50px 0 0 45%; position:fixed; width:60%;">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Orderdate:</strong>
-  <%= @order.orderDate %>
+  <strong>Order date:</strong>
+  <%= @order.order_date %>
 </p>
 
 <p>
@@ -13,30 +11,9 @@
 </p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
-</p>
-
-<p>
-  <strong>Totalprice:</strong>
-  <%= @order.totalPrice %>
-</p>
-
-<p>
-  <strong>Cart:</strong>
-  <%= @order.cart_id %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
- <%= @order.customer.try(:name) %>
-</p>
-
-<p>
-  <strong>Good:</strong>
- <%= @order.good.try(:name) %>
+  <strong>Customers:</strong>
+  <%= @order.customers_id %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
-</div>

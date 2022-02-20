@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.paginate(page: params[:page],per_page: 5)
+    @orders = Order.all
   end
 
   # GET /orders/1 or /orders/1.json
@@ -65,6 +65,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:orderDate, :status, :quantity, :totalPrice, :cart_id, :customer_id, :good_id)
+      params.require(:order).permit(:order_date, :status, :customers_id)
     end
 end

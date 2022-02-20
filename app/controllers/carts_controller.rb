@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   # GET /carts or /carts.json
   def index
-    @carts = Cart.paginate(page: params[:page],per_page: 5)
+    @carts = Cart.all
   end
 
   # GET /carts/1 or /carts/1.json
@@ -65,6 +65,6 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit(:quantity, :totalprice, :good_id, :customer_id)
+      params.require(:cart).permit(:customers_id)
     end
 end
