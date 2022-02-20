@@ -61,10 +61,10 @@ div.content {
 <div class="container">
 <nav>
 <ul class="nav navbar-nav navbar-right">
-<li><%= link_to current_admin.email , edit_admin_registration_path %></li>
+<li><%= link_to current_admin.name , edit_admin_registration_path %></li>
 <li><%= link_to "Help", '#' %></li>
 <li><%= link_to "sign out", destroy_admin_session_path,method: :delete %></li>
-</ul
+</ul>
 </nav>
 </div>
 </header>

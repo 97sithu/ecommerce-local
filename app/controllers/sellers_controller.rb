@@ -65,6 +65,6 @@ class SellersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def seller_params
-      params.require(:seller).permit(:name, :phone, :email, :address, :intro, :image)
+      params.require(:seller).permit(:name, :phone, :email, :address, :intro, :image, :password)
     end
 end

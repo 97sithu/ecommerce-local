@@ -3,7 +3,9 @@ class GoodsController < ApplicationController
 
   # GET /goods or /goods.json
   def index
-    @goods = Good.paginate(page: params[:page],per_page: 3)
+    
+    @goods = Good.where(seller: current_seller).paginate(page: params[:page],per_page: 3)
+
   end
 
   # GET /goods/1 or /goods/1.json
@@ -67,4 +69,5 @@ class GoodsController < ApplicationController
     def good_params
       params.require(:good).permit(:name, :price, :measurement, :expireDate, :about, :seller_id, :category_id, :image)
     end
+    
 end

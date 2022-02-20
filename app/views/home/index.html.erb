@@ -1,10 +1,13 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
-<% if current_admin%>
-<h1><%=current_admin.email %></h1>
-    <%= link_to "Sign Out", destroy_admin_session_path,method: :delete %>
-    <%else%>
+<div>
+<h1>For Admin</h1>
     <%= link_to "Sign Up", new_admin_registration_path %>
     <%= link_to "Sign In", new_admin_session_path %>
-    <% end %>  
-
+ 
+</div>
+<div>
+<h1>For Seller</h1>
+<%= link_to "Sign up", new_seller_registration_path%>
+<%=link_to "Sign In", new_seller_session_path%>
+</div>
